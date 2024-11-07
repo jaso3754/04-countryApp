@@ -10,19 +10,20 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
 
   private debouncer:Subject<string> = new Subject<string>();
   private debouncerSuscription?: Subscription;
-  private initialValue: Subject<string> = new Subject<string>();
+
 
   @Input()
   public placeholder: string = '';
 
+  @Input()
+  public initialValue = '';
+  
   @Output()
   public onValue = new EventEmitter<string>();
 
   @Output()
   public onDebounce = new EventEmitter<string>();
 
-  @Output()
-  public initialValue = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.debouncerSuscription = this.debouncer
@@ -46,7 +47,5 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
    this.debouncer.next(searchTerm);
   }
 
-  Value ( : string ): void {
-    this.initialValue.next (  term )
-  }
+
 }
